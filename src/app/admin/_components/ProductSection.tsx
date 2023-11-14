@@ -1,5 +1,7 @@
+import SectionLayout from "./SectionLayout";
+
 const Products = () => {
-  return <div>Products</div>;
+  return <SectionLayout title={"Product"}>Products</SectionLayout>;
 };
 
 export default Products;
