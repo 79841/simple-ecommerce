@@ -3,10 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
+    "dev": "yarn run prisma:generate && next dev",
+    "build": "yarn run prisma:generate && next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "prisma:generate": "npx prisma generate --schema=./src/prisma/schema.prisma"
   },
   "dependencies": {
     "@prisma/client": "^5.5.2",
