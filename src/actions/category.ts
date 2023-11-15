@@ -1,19 +1,30 @@
 "use server";
 import prisma from "../prisma/client";
-import { TCategory } from "@/types/Category";
+import type { TCategory, TCreateCategory } from "@/types/Category";
 import { revalidatePath } from "next/cache";
 
-export const createCategory = async (name: string) => {
+export const createCategory = async (category: TCreateCategory) => {
   await prisma.category.create({
-    data: { name },
+    data: category,
   });
 
   revalidatePath("/admin");
 };
 
 export const getCategories = async () => {
-  const category = await prisma.category.findMany();
-  return category;
+  const categories = await prisma.category.findMany({});
+  return categories;
+};
+
+export const searchCategories = async (keyword: string) => {
+  const categories = await prisma.category.findMany({
+    where: {
+      name: {
+        contains: keyword,
+      },
+    },
+  });
+  return categories;
 };
 
 export const deleteCategory = async (id: TCategory["id"]) => {
