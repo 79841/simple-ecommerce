@@ -1,5 +1,4 @@
 import { ChangeEventHandler, PropsWithChildren, useState } from "react";
-import SearchList from "./SearchList";
 import { TCategory } from "@/types/Category";
 import { TProduction } from "@/types/Production";
 
