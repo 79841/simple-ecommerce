@@ -8,7 +8,7 @@ export const Categories = async () => {
       <ul>
         {categories.map((category) => (
           <li key={category.id}>
-            <Category category={category} />
+            <Category item={category} />
           </li>
         ))}
       </ul>

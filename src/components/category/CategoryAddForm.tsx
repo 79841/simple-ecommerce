@@ -19,7 +19,7 @@ export const CategoryAddForm = () => {
       return { message: "Wrong category name" };
     }
     try {
-      await createCategory(validatedData.data.name);
+      await createCategory(validatedData.data);
       ref.current?.reset();
       return { message: `Added category ${validatedData.data.name}` };
     } catch (e) {
