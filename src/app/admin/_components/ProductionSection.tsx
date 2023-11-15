@@ -1,7 +1,13 @@
+import { ProductionAddForm, Productions } from "@/components/production";
 import SectionLayout from "./SectionLayout";
 
-const Productions = () => {
-  return <SectionLayout title={"Production"}>Productions</SectionLayout>;
+const ProductionSection = () => {
+  return (
+    <SectionLayout title={"Production"}>
+      <ProductionAddForm />
+      <Productions />
+    </SectionLayout>
+  );
 };
 
-export default Productions;
+export default ProductionSection;
