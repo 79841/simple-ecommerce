@@ -1,7 +1,16 @@
+import SelectedCategoryContextProvider from "@/context/SelectedCategory/SelectedCategoryContextProvider";
 import SectionLayout from "./SectionLayout";
+import { ProductAddForm, Products } from "@/components/product";
 
-const Products = () => {
-  return <SectionLayout title={"Product"}>Products</SectionLayout>;
+const ProductSection = () => {
+  return (
+    <SectionLayout title={"Product"}>
+      <SelectedCategoryContextProvider>
+        <ProductAddForm />
+        <Products />
+      </SelectedCategoryContextProvider>
+    </SectionLayout>
+  );
 };
 
-export default Products;
+export default ProductSection;

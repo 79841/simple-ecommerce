@@ -1,6 +1,4 @@
-import { searchCategories } from "@/actions/category";
-import Search from "../search/Search";
-import { useSelectedCategoryContext } from "@/context/SearchedCategory";
+import { useSelectedCategoryContext } from "@/context/SelectedCategory";
 import { TCategory } from "@/types/Category";
 
 type TCategorySelectorProps = {

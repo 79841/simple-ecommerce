@@ -5,6 +5,8 @@ export type TProduct = {
   id: string;
   name: string;
   price: number;
-  categoryId: TCategory;
-  productionId: TProduction;
+  categoryId: TCategory["id"];
+  productionId: TProduction["id"];
 };
+
+export type TCreateProduct = Omit<TProduct, "id">;
