@@ -1,11 +1,19 @@
 "use client";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import Search from "../search/Search";
 import { searchCategories } from "@/actions/category";
-import CategorySelector from "./CategorySelector";
+import { TCategory } from "@/types/Category";
+import { TProduction } from "@/types/Production";
+import { searchProductions } from "@/actions/production";
 
 export const ProductAddForm = () => {
   const ref = useRef<HTMLFormElement>(null);
+
+  const [selectedCategory, setSelectedCategory] = useState<TCategory | null>(
+    null
+  );
+  const [selectedProduction, setSelectedProduction] =
+    useState<TProduction | null>(null);
 
   return (
     <div className="flex flex-col items-center w-[80%]">
@@ -16,7 +24,16 @@ export const ProductAddForm = () => {
           name="name"
         />
 
-        <Search searchAction={searchCategories} Selector={CategorySelector} />
+        <Search
+          searchAction={searchCategories}
+          selectedItem={selectedCategory}
+          setSelectedItem={setSelectedCategory}
+        />
+        <Search
+          searchAction={searchProductions}
+          selectedItem={selectedProduction}
+          setSelectedItem={setSelectedProduction}
+        />
 
         <button
           type="submit"
