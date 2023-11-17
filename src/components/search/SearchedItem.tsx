@@ -10,8 +10,6 @@ type TSearchedItemProps = {
 const SearchedItem = ({ item }: TSearchedItemProps) => {
   const { selectedItem, selectItem, deselectItem } = useSelectedItemContext();
   const handleClick: MouseEventHandler<HTMLDivElement> = (e) => {
-    console.log(selectedItem);
-    console.log(item);
     if (selectedItem != null && selectedItem.id == item.id) {
       deselectItem();
     } else {
