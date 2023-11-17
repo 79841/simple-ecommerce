@@ -3,6 +3,7 @@ import { createProduction } from "@/actions/production";
 import { useRef } from "react";
 import { useFormState } from "react-dom";
 import { z } from "zod";
+import RoundInputBox from "../shared/input/RoundInputBox";
 
 export const ProductionAddForm = () => {
   const ref = useRef<HTMLFormElement>(null);
@@ -15,7 +16,6 @@ export const ProductionAddForm = () => {
       name: formData.get("name"),
     });
     if (!validatedData.success) {
-      console.log(validatedData);
       return { message: "Wrong production name" };
     }
     try {
@@ -30,11 +30,7 @@ export const ProductionAddForm = () => {
   return (
     <div className="flex flex-col items-center">
       <form ref={ref} action={formAction}>
-        <input
-          className="border-black border-2 border-solid h-8 rounded-md mr-4"
-          type="text"
-          name="name"
-        />
+        <RoundInputBox type="text" name="name" />
         <button
           type="submit"
           className="border-black border-2 border-solid h-8 rounded-md w-16"

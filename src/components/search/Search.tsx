@@ -2,6 +2,7 @@ import { ChangeEventHandler, Dispatch, SetStateAction, useState } from "react";
 import { TSelectedItem } from "@/context/SelectedItemContext/SelectedItemContext";
 import { SelectedItemContextProvider } from "@/context/SelectedItemContext";
 import SearchedList from "./SearchedList";
+import RoundInputBox from "../shared/input/RoundInputBox";
 
 type TSearchProps = {
   searchAction: (keyword: string) => Promise<TSelectedItem[]>;
@@ -33,12 +34,13 @@ const Search = ({
       setSelecetItem={setSelectedItem}
     >
       <div>
-        <input
+        {/* <input
           onChange={handleChange}
           className="border-black border-2 border-solid h-8 rounded-md"
           type="text"
           name="keyword"
-        />
+        /> */}
+        <RoundInputBox onChange={handleChange} type="text" name="keyword" />
         <SearchedList items={items} />
       </div>
     </SelectedItemContextProvider>
