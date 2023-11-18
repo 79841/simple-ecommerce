@@ -6,7 +6,7 @@ type TSearchedListProps = {
 };
 const SearchedList = ({ items }: TSearchedListProps) => {
   return (
-    <div className="flex flex-wrap gap-2 m-2 mt-4 mb-4">
+    <div className="flex flex-wrap gap-2 m-2 mt-4 mb-4 justify-between">
       {items.map((item) => {
         return <SearchedItem key={item.id} item={item} />;
       })}
