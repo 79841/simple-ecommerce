@@ -33,7 +33,7 @@ const Search = ({
       selectedItem={selectedItem}
       setSelecetItem={setSelectedItem}
     >
-      <div>
+      <div className="flex flex-col items-center">
         {/* <input
           onChange={handleChange}
           className="border-black border-2 border-solid h-8 rounded-md"
