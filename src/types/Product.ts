@@ -7,6 +7,8 @@ export type TProduct = {
   price: number;
   categoryId: TCategory["id"];
   productionId: TProduction["id"];
+  category: TCategory;
+  production: TProduction;
 };
 
-export type TCreateProduct = Omit<TProduct, "id">;
+export type TCreateProduct = Omit<TProduct, "id" | "category" | "production">;

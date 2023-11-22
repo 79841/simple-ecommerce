@@ -1,8 +1,8 @@
 "use server";
 
-import prisma from "@/prisma/client";
 import type { TCreateProduct, TProduct } from "@/types/Product";
 import { revalidatePath } from "next/cache";
+import prisma from "../../prisma/client";
 
 export const createProduct = async (product: TCreateProduct) => {
   await prisma.product.create({
@@ -12,7 +12,12 @@ export const createProduct = async (product: TCreateProduct) => {
 };
 
 export const getProducts = async () => {
-  const products = await prisma.product.findMany({});
+  const products = await prisma.product.findMany({
+    include: {
+      category: true,
+      production: true,
+    },
+  });
   return products;
 };
 
