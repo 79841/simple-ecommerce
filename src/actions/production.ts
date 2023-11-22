@@ -1,8 +1,8 @@
 "use server";
 
-import prisma from "@/prisma/client";
 import { TCreateProduction, TProduction } from "@/types/Production";
 import { revalidatePath } from "next/cache";
+import prisma from "../../prisma/client";
 
 export const createProduction = async (production: TCreateProduction) => {
   await prisma.production.create({

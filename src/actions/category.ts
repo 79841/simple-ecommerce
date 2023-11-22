@@ -1,7 +1,7 @@
 "use server";
-import prisma from "../prisma/client";
 import type { TCategory, TCreateCategory } from "@/types/Category";
 import { revalidatePath } from "next/cache";
+import prisma from "../../prisma/client";
 
 export const createCategory = async (category: TCreateCategory) => {
   await prisma.category.create({
