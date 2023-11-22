@@ -2,3 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer components {
+  .button-bordered {
+    @apply rounded-md border-2 border-solid border-black p-1 hover:bg-black hover:text-white;
+  }
+}
