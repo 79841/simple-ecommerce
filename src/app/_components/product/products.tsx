@@ -1,12 +1,10 @@
-import { TProduct } from "@/types/Product";
-import { Product } from "./product";
+import { Product } from "./Product";
+import { getProducts } from "@/actions/product";
 
-type TProductsProps = {
-  products: TProduct[];
-};
-export const Products = ({ products }: TProductsProps) => {
+export const Products = async () => {
+  const products = await getProducts();
   return (
-    <div>
+    <div className="w-[30rem]">
       {products.map((product) => (
         <Product key={product.id} product={product} />
       ))}
