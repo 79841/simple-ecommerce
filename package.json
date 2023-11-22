@@ -7,7 +7,7 @@
     "build": "yarn run prisma:generate && next build",
     "start": "next start",
     "lint": "next lint",
-    "prisma:generate": "npx prisma generate --schema=./src/prisma/schema.prisma"
+    "prisma:generate": "npx prisma generate"
   },
   "dependencies": {
     "@prisma/client": "^5.5.2",
@@ -28,6 +28,8 @@
     "eslint": "^8",
     "eslint-config-next": "14.0.2",
     "postcss": "^8",
+    "prettier": "^3.1.0",
+    "prettier-plugin-tailwindcss": "^0.5.7",
     "tailwindcss": "^3.3.0",
     "typescript": "^5"
   }
