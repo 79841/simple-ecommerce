@@ -1,11 +1,11 @@
-import { getProducts } from "@/actions/product";
+import { Cart } from "./_components/cart";
 import { Products } from "./_components/product";
 
 export default async function Home() {
-  const products = await getProducts();
   return (
-    <div>
-      <Products products={products} />
+    <div className="flex min-h-screen flex-wrap items-center justify-center p-10 pt-20">
+      <Products />
+      <Cart />
     </div>
   );
 }
