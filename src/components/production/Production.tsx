@@ -2,13 +2,14 @@
 import { deleteProduction } from "@/actions/production";
 import { TProduction } from "@/types/Production";
 import { z } from "zod";
-import DeleteButton from "../shared/button/DeleteButton";
+import DeleteForm from "../shared/form/DeleteForm";
+import { memo, useCallback } from "react";
 
 type TProductionProps = {
   item: TProduction;
 };
-export const Production = ({ item }: TProductionProps) => {
-  const formAction = async (formData: FormData) => {
+export const Production = memo(function Production({ item }: TProductionProps) {
+  const formAction = useCallback(async (formData: FormData) => {
     const schema = z.object({
       id: z.string(),
     });
@@ -24,14 +25,7 @@ export const Production = ({ item }: TProductionProps) => {
     } catch (e) {
       return { message: "Failed to delete production" };
     }
-  };
-  return (
-    <div className="flex">
-      <div className="mr-2 mb-1">{item.name}</div>
-      <form action={formAction}>
-        <input type="hidden" name="id" value={item.id} />
-        <DeleteButton />
-      </form>
-    </div>
-  );
-};
+  }, []);
+
+  return <DeleteForm formAction={formAction} item={item} />;
+});

@@ -3,7 +3,7 @@ import { deleteProduct } from "@/actions/product";
 import { TProduct } from "@/types/Product";
 import { z } from "zod";
 import DeleteForm from "../shared/form/DeleteForm";
-import { memo, useCallback } from 'react';
+import { memo, useCallback } from "react";
 
 type TProductProps = {
   item: TProduct;
@@ -26,7 +26,7 @@ export const Product = memo(function Product({ item }: TProductProps) {
     } catch (e) {
       return { mesage: "Falied to delete product" };
     }
-  },[]);
+  }, []);
 
   return <DeleteForm formAction={formAction} item={item} />;
 });
