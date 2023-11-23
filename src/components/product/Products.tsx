@@ -1,5 +1,5 @@
 import { getProducts } from "@/actions/product";
-import { Product } from ".";
+import { Product } from "./Product";
 
 export const Products = async () => {
   const products = await getProducts();
