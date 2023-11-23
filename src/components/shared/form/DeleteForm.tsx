@@ -2,12 +2,13 @@ import { TCategory } from "@/types/Category";
 import { TProduct } from "@/types/Product";
 import { TProduction } from "@/types/Production";
 import DeleteButton from "../button/DeleteButton";
+import { memo } from "react";
 
 type TDeleteFormProps = {
   formAction: (formData: FormData) => void;
   item: TCategory | TProduction | TProduct;
 };
-const DeleteForm = ({ formAction, item }: TDeleteFormProps) => {
+const DeleteForm = memo(function DeleteForm({ formAction, item }: TDeleteFormProps) {
   return (
     <div className="flex">
       <div className="mr-2 mb-1">{item.name}</div>
@@ -17,6 +18,6 @@ const DeleteForm = ({ formAction, item }: TDeleteFormProps) => {
       </form>
     </div>
   );
-};
+});
 
 export default DeleteForm;
