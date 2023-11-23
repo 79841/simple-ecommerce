@@ -5,8 +5,8 @@ import { z } from "zod";
 import DeleteForm from "../shared/form/DeleteForm";
 import { memo, useCallback } from "react";
 
-type TCategoryProps = { 
-  item: TCategory 
+type TCategoryProps = {
+  item: TCategory;
 };
 
 export const Category = memo(function Category({ item }: TCategoryProps) {
@@ -26,7 +26,7 @@ export const Category = memo(function Category({ item }: TCategoryProps) {
     } catch (e) {
       return { message: "Failed to delete category" };
     }
-  },[]);
+  }, []);
 
   return <DeleteForm formAction={formAction} item={item} />;
 });
