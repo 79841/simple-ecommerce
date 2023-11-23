@@ -3,11 +3,13 @@ import { deleteCategory } from "@/actions/category";
 import { TCategory } from "@/types/Category";
 import { z } from "zod";
 import DeleteForm from "../shared/form/DeleteForm";
-import { useCallback } from "react";
+import { memo, useCallback } from "react";
 
-type TCategoryProps = { item: TCategory };
+type TCategoryProps = { 
+  item: TCategory 
+};
 
-export const Category = (function Category({ item }: TCategoryProps) {
+export const Category = memo(function Category({ item }: TCategoryProps) {
   const formAction = useCallback(async (formData: FormData) => {
     const schema = z.object({
       id: z.string().min(1),

@@ -7,9 +7,7 @@ export const Categories = async () => {
     <div className="w-[70%]">
       <ul>
         {categories.map((category) => (
-          <li key={category.id}>
-            <Category item={category} />
-          </li>
+            <Category key={category.id} item={category} />
         ))}
       </ul>
     </div>
