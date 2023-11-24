@@ -1,4 +1,11 @@
-import { ChangeEventHandler, Dispatch, SetStateAction, useState } from "react";
+import {
+  ChangeEventHandler,
+  Dispatch,
+  SetStateAction,
+  memo,
+  useCallback,
+  useState,
+} from "react";
 import { TSelectedItem } from "@/context/SelectedItemContext/SelectedItemContext";
 import { SelectedItemContextProvider } from "@/context/SelectedItemContext";
 import SearchedList from "./SearchedList";
@@ -9,24 +16,25 @@ type TSearchProps = {
   selectedItem: TSelectedItem | null;
   setSelectedItem: Dispatch<SetStateAction<TSelectedItem | null>>;
 };
-const Search = ({
+const Search = memo(function Search({
   searchAction,
   selectedItem,
   setSelectedItem,
-}: TSearchProps) => {
+}: TSearchProps) {
   const [items, setItems] = useState<TSelectedItem[]>([]);
 
-  const handleChange: ChangeEventHandler<HTMLInputElement> = async ({
-    target,
-  }) => {
-    const { value } = target;
-    if (value.length < 1) {
-      setItems([]);
-      return;
-    }
-    const items = await searchAction(value);
-    setItems(items);
-  };
+  const handleChange: ChangeEventHandler<HTMLInputElement> = useCallback(
+    async ({ target }) => {
+      const { value } = target;
+      if (value.length < 1) {
+        setItems([]);
+        return;
+      }
+      const items = await searchAction(value);
+      setItems(items);
+    },
+    [searchAction],
+  );
 
   return (
     <SelectedItemContextProvider
@@ -39,6 +47,6 @@ const Search = ({
       </div>
     </SelectedItemContextProvider>
   );
-};
+});
 
 export default Search;

@@ -2,12 +2,12 @@ import {
   TSelectedItem,
   useSelectedItemContext,
 } from "@/context/SelectedItemContext";
-import { MouseEventHandler } from "react";
+import { MouseEventHandler, memo } from "react";
 
 type TSearchedItemProps = {
   item: TSelectedItem;
 };
-const SearchedItem = ({ item }: TSearchedItemProps) => {
+const SearchedItem = memo(function SearchedItem({ item }: TSearchedItemProps) {
   const { selectedItem, selectItem, deselectItem } = useSelectedItemContext();
   const handleClick: MouseEventHandler<HTMLDivElement> = (e) => {
     if (selectedItem != null && selectedItem.id == item.id) {
@@ -23,12 +23,12 @@ const SearchedItem = ({ item }: TSearchedItemProps) => {
   };
   return (
     <div
-      className={`${theme.backgroundColor} ${theme.textColor} border-black border-2 border-solid rounded-md p-1`}
+      className={`${theme.backgroundColor} ${theme.textColor} rounded-md border-2 border-solid border-black p-1`}
       onClick={handleClick}
     >
       {item.name}
     </div>
   );
-};
+});
 
 export default SearchedItem;

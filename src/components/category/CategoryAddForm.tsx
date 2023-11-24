@@ -1,11 +1,11 @@
 "use client";
 import { createCategory } from "@/actions/category";
-import { useRef } from "react";
+import { memo, useRef } from "react";
 import { useFormState } from "react-dom";
 import { z } from "zod";
 import RoundInputBox from "../shared/input/RoundInputBox";
 
-export const CategoryAddForm = () => {
+export const CategoryAddForm = memo(function CategoryAddForm() {
   const ref = useRef<HTMLFormElement>(null);
 
   const handleAction = async (prevState: any, formData: FormData) => {
@@ -36,12 +36,12 @@ export const CategoryAddForm = () => {
         <RoundInputBox type="text" name="name" />
         <button
           type="submit"
-          className="border-black border-2 border-solid h-8 rounded-md w-16"
+          className="h-8 w-16 rounded-md border-2 border-solid border-black"
         >
           Add
         </button>
       </form>
-      <div className="text-red-500 m-2">{state?.message}</div>
+      <div className="m-2 text-red-500">{state?.message}</div>
     </div>
   );
-};
+});

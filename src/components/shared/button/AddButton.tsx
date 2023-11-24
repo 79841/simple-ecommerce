@@ -1,12 +1,16 @@
-const AddButton = () => {
+"use client";
+
+import { memo } from "react";
+
+const AddButton = memo(function AddButton() {
   return (
     <button
       type="submit"
-      className="border-black border-2 border-solid h-8 rounded-md w-16"
+      className="h-8 w-16 rounded-md border-2 border-solid border-black"
     >
       Add
     </button>
   );
-};
+});
 
 export default AddButton;

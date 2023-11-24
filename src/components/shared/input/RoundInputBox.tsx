@@ -1,15 +1,15 @@
-import { ComponentPropsWithoutRef } from "react";
+import { ComponentPropsWithoutRef, memo } from "react";
 
 type TRoundInputBoxProps = ComponentPropsWithoutRef<"input">;
-const RoundInputBox = (props: TRoundInputBoxProps) => {
+const RoundInputBox = memo(function RoundInputBox(props: TRoundInputBoxProps) {
   return (
     <input
-      className="border-black border-2 border-solid h-8 rounded-md m-2"
+      className="m-2 h-8 rounded-md border-2 border-solid border-black"
       type="text"
       name="name"
       {...props}
     />
   );
-};
+});
 
 export default RoundInputBox;

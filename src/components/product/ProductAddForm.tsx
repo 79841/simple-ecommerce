@@ -1,5 +1,5 @@
 "use client";
-import { ChangeEventHandler, useRef, useState } from "react";
+import { ChangeEventHandler, memo, useRef, useState } from "react";
 import Search from "../search/Search";
 import { searchCategories } from "@/actions/category";
 import { TCategory } from "@/types/Category";
@@ -11,11 +11,11 @@ import { useFormState } from "react-dom";
 import { z } from "zod";
 import { createProduct } from "@/actions/product";
 
-export const ProductAddForm = () => {
+export const ProductAddForm = memo(function ProductAddForm() {
   const ref = useRef<HTMLFormElement>(null);
 
   const [selectedCategory, setSelectedCategory] = useState<TCategory | null>(
-    null
+    null,
   );
   const [selectedProduction, setSelectedProduction] =
     useState<TProduction | null>(null);
@@ -50,14 +50,14 @@ export const ProductAddForm = () => {
   const [state, formAction] = useFormState(handleAction, null);
 
   return (
-    <div className="flex flex-col items-center w-[80%] ">
+    <div className="flex w-[80%] flex-col items-center ">
       <form
         ref={ref}
         className="flex flex-col items-center"
         action={formAction}
       >
         <RoundInputBox type="text" name="name" />
-        <div className="text-red-500 m-2">{state?.message}</div>
+        <div className="m-2 text-red-500">{state?.message}</div>
         <Search
           searchAction={searchCategories}
           selectedItem={selectedCategory}
@@ -84,4 +84,4 @@ export const ProductAddForm = () => {
       </form>
     </div>
   );
-};
+});
