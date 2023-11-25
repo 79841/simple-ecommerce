@@ -2,7 +2,7 @@ import {
   TSelectedItem,
   useSelectedItemContext,
 } from "@/context/SelectedItemContext";
-import { MouseEventHandler, memo } from "react";
+import { MouseEventHandler, memo, useCallback } from "react";
 
 type TSearchedItemProps = {
   item: TSelectedItem;
