@@ -1,5 +1,5 @@
 "use client";
-import { ChangeEventHandler, memo, useRef, useState } from "react";
+import { memo, useRef, useState } from "react";
 import Search from "../search/Search";
 import { searchCategories } from "@/actions/category";
 import { TCategory } from "@/types/Category";
