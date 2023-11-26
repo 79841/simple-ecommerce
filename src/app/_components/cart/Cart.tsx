@@ -3,13 +3,13 @@
 import { addItem, deleteItem, subItem } from "@/lib/redux";
 import { cartSelector } from "@/lib/redux/slices/cartSlice/selector";
 import { TProduct } from "@/types/Product";
-import { MouseEventHandler } from "react";
+import { MouseEventHandler, memo } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 type TCartItemProps = {
   item: { count: number; product: TProduct };
 };
-const CartItem = ({ item }: TCartItemProps) => {
+const CartItem = memo(function CartItem({ item }: TCartItemProps) {
   const { count, product } = item;
   const dispatch = useDispatch();
 
@@ -24,7 +24,7 @@ const CartItem = ({ item }: TCartItemProps) => {
     dispatch(deleteItem(product.id));
   };
   return (
-    <div className="rounded-md border-2 border-solid border-black p-2">
+    <div className="m-2 rounded-md border-2 border-solid border-black p-2">
       <div>{product.name}</div>
       <div>{count}</div>
       <div>{product.price}</div>
@@ -42,7 +42,7 @@ const CartItem = ({ item }: TCartItemProps) => {
       </button>
     </div>
   );
-};
+});
 
 export const Cart = () => {
   const cart = useSelector(cartSelector);
